@@ -15,7 +15,7 @@ using OfficeDevPnP.Core.Framework.Provisioning.Model.Configuration;
 using SharePointPnP.PowerShell.Commands.Base;
 using System.Threading.Tasks;
 
-namespace SharePointPnP.PowerShell.Commands.Provisioning.Site
+namespace SharePointPnP.PowerShell.Commands.Provisioning.Tenant
 {
     [Cmdlet(VerbsCommon.Get, "PnPTenantTemplate", SupportsShouldProcess = true)]
     [CmdletHelp("Generates a provisioning tenant template from a site. If the site is a hubsite any connected site will be included.",
@@ -52,7 +52,7 @@ namespace SharePointPnP.PowerShell.Commands.Provisioning.Site
         protected override void ExecuteCmdlet()
         {
             
-            ExtractConfiguration extractConfiguration = null;
+            ExtractConfiguration extractConfiguration = new ExtractConfiguration();
             if (ParameterSpecified(nameof(Configuration)))
             {
                 extractConfiguration = Configuration.GetConfiguration(SessionState.Path.CurrentFileSystemLocation.Path);
